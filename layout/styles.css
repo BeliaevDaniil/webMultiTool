@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+body{
+    background-image: url('img/bg.png');
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainSpace{
+    height: 683px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.naming{
+    color: white;
+    font-family: "Poiret One", sans-serif;
+    letter-spacing: 1px;
+    font-size: 50px;
+    padding: 0;
+    margin: 0 0 0 180px;
+}
+
+.innerSpace{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.workspace{
+    height: 632px;
+    width: 800px;
+    border-radius: 60px;
+    margin-right: 40px;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    backdrop-filter: blur(20px);
+    border: 3px solid white;
+    display: grid;
+    grid-template-columns: repeat(2, 340px);
+    grid-template-rows: repeat(2, 256px);
+    grid-gap: 30px;
+    justify-content: center;
+}
+
+.sidebar{
+    height: 632px;
+    width: 240px;
+    border-radius: 60px;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    backdrop-filter: blur(20px);
+    border: 3px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.widgetIcon{
+    height: 120px;
+    width: 120px;
+    border: 1px solid white;
+    border-radius: 38px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    cursor: grab;
+}
+
+.widgetIcon img {
+    height: 120px;
+    width: 120px;
+}
+
+.widget{
+    width: 340px;
+    height: 256px;
+    border-radius: 20px;
+    cursor: grab;
+    color: white;
+    margin-top: 45px;
+    background-image: url('img/bigWidget.png');
+    background-size: 340px 256px;
+}
+
+.clock{
+    width: 300px;
+    height: 140px;
+    background-color: gray;
+    margin-left: 19px;
+    margin-top: 50px;
+}
+
+#date{
+    width: 180px;
+    height: 40px;
+    border-radius: 16px;
+    background-color: #4B4B4B;
+}
+

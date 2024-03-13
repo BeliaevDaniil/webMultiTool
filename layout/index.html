@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebMultiTool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="mainSpace">
+    <p class="naming">WebMultiTool</p>
+    <div class="innerSpace">
+        <div class="workspace" id="workspace">
+            <div class="widget" id="timeWidget" draggable="true">
+                <div class="clock" id="clock">
+                    <div id="date">18 March 2003</div>
+                    <ul>
+                        <li id="hours"></li>
+                        <li id="min"></li>
+                        <li id="sec"></li>
+                        <li></li>
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+            <div class="widget" id="geoWidget" draggable="true" hidden></div>
+            <div class="widget" id="weatherWidget" draggable="true" hidden></div>
+            <div class="widget" id="dicWidget" draggable="true" hidden></div>
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="widgetIcon" id="geoIcon" draggable="true"><img src="img/geo.png" alt=""></div>
+            <div class="widgetIcon" id="weatherIcon" draggable="true"><img src="img/weather.png" alt=""></div>
+            <div class="widgetIcon" id="timeIcon" draggable="true"><img src="img/time.png" alt=""></div>
+            <div class="widgetIcon" id="dicIcon" draggable="true"><img src="img/dic.png" alt=""></div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>
