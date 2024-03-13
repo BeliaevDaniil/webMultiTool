@@ -1,8 +1,28 @@
 import {getNodeById} from "./modules/utils.js";
-import clock from "./modules/clock";
+import clock from "./modules/clock.js";
+import initMap from "./modules/map.js";
 
 //CLOCK
 setInterval(clock, 500)
+//GEO
+initMap();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //DRAG AND DROP
 const widgetIcons = document.querySelectorAll('.widgetIcon')
@@ -19,7 +39,7 @@ widgetIcons.forEach(icon => {
         workSpace.addEventListener('drop', ()=>{
             switch (selected.id) {
                 case 'geoIcon':
-                    const geoWidget = getNodeById(widgets,'geoWidget')
+                    const geoWidget = getNodeById(widgets,'map')
                     geoWidget.hidden=false
                     workSpace.appendChild(geoWidget)
                     break
@@ -53,7 +73,7 @@ widgets.forEach(widget => {
         })
         sidebar.addEventListener('drop', ()=>{
             switch (selected.id) {
-                case 'geoWidget':
+                case 'map':
                     const geoIcon = getNodeById(widgetIcons,'geoIcon')
                     geoIcon.hidden=false
                     sidebar.appendChild(geoIcon)
