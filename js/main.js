@@ -1,6 +1,10 @@
 import {getNodeById} from "./modules/utils.js";
+import clock from "./modules/clock";
 
+//CLOCK
+setInterval(clock, 500)
 
+//DRAG AND DROP
 const widgetIcons = document.querySelectorAll('.widgetIcon')
 const widgets = document.querySelectorAll('.widget')
 const workSpace = document.getElementById('workspace')
@@ -75,6 +79,35 @@ widgets.forEach(widget => {
         })
     })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
