@@ -130,3 +130,60 @@ body{
 }
 
 
+.dictaphone{
+    width: 340px;
+    height: 256px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mic {
+    height: 44px;
+    width: 44px;
+    background-image: url('img/mic.svg');
+    background-size: 44px 44px;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 9px 0 rgba(0,0,0,0.25);
+}
+
+.mic:hover{
+    background-image: url('img/mic_hover.svg');
+}
+
+.mic.isRecording{
+    background-image: url('img/mic_isRec.svg');
+}
+
+.recordPlate{
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+}
+
+.record{
+    height: 30px;
+    width: 245px;
+    border-radius: 30px;
+    box-shadow: 0 9px 0 rgba(0,0,0,0.25);
+}
+
+.deleteRecord{
+    height: 30px;
+    width: 30px;
+    background-size: 30px 30px;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+    background-image: url("img/delete.svg");
+    margin-left: 5px;
+    box-shadow: 0 9px 0 rgba(0,0,0,0.25);
+}
+
+.deleteRecord:hover{
+    background-image: url("img/delete_hover.svg");
+}
