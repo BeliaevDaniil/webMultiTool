@@ -187,3 +187,69 @@ body{
 .deleteRecord:hover{
     background-image: url("img/delete_hover.svg");
 }
+
+.weatherContainer{
+    width: 340px;
+    height: 256px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Roboto, Normal", sans-serif;
+}
+
+.search{
+    height: 30px;
+    width: 280px;
+    background-color: #4B4B4B;
+    border-radius: 30px;
+    box-shadow: 0 9px 0 rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search input{
+    width: 210px;
+    margin: 0 10px 0 10px;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.search_btn{
+    height: 18px;
+    width: 18px;
+    background-image: url("img/search.svg");
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.search_btn:hover{
+    background-image: url("img/search_hover.svg");
+}
+
+
+.weather_img {
+    height: 100px;
+    width: 106px;
+    margin-top: 20px
+}
+
+.temp{
+    margin: 10px 0 0 0;
+}
+
+.temp_description{
+    margin: 10px 0 0 0;
+}
+
+
+
+
+
+
+
+
+

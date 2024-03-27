@@ -23,7 +23,20 @@
             </div>
 
             <div class="widget" id="map" draggable="true" hidden></div>
-            <div class="widget" id="weatherWidget" draggable="true" hidden></div>
+
+            <div class="widget" id="weatherWidget" draggable="true" hidden>
+                <div class="weatherContainer">
+                    <div class="search">
+                        <img src="img/location.svg" alt="location">
+                        <label><input type="text" class="weather_inp" placeholder="Enter your location" value="Prague"></label>
+                        <button class="search_btn"></button>
+                    </div>
+                    <img src="" alt="" class="weather_img">
+                    <p class="temp"></p>
+                    <p class="temp_description"></p>
+                </div>
+            </div>
+
             <div class="widget" id="dicWidget" draggable="true" hidden>
                 <div class="dictaphone">
                     <button class="mic"></button>
