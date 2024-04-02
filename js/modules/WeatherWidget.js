@@ -1,9 +1,10 @@
 import Widget from "./Widget.js";
-
+import {validateInput} from "./utils.js";
 
 export class WeatherWidget extends Widget{
     #apiKey = 'f251d856c58e6672d9a1f2502f32c0a3'
     #search_btn = document.querySelector('.search_btn')
+    #inputField = document.querySelector('.weather_inp');
     #image = document.querySelector('.weather_img');
     #temp = document.querySelector('.temp');
     #description = document.querySelector('.temp_description');
@@ -14,16 +15,22 @@ export class WeatherWidget extends Widget{
 
     activate(){
         this.#search_btn.addEventListener('click', this.#setUp.bind(this))
+        this.#inputField.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                this.#setUp();
+            }
+        })
     }
 
     #setUp(){
         const city = document.querySelector('.weather_inp').value
         if (city === '') return
+        validateInput(city)
 
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${this.#apiKey}`)
             .then(response => response.json())
             .then(json => {
-                if (json.cod === '404') alert("ERROR 404: Not Found")
+                if (json.cod === '404') alert("ERROR 404: Location not found")
 
                 const currWeather = json.weather[0]
                 const currHours = new Date().getHours();

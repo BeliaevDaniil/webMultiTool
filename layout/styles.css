@@ -6,14 +6,14 @@ body{
     justify-content: center;
     align-items: center;
 }
-.mainSpace{
+main{
     height: 683px;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.naming{
+header{
     color: white;
     font-family: "Poiret One", sans-serif;
     letter-spacing: 1px;
@@ -66,7 +66,7 @@ body{
     cursor: grab;
 }
 
-.widgetIcon img {
+.widgetIcon > img {
     height: 120px;
     width: 120px;
 }
@@ -111,7 +111,7 @@ body{
     padding: 0 0 0 0;
 }
 
-.clock li{
+.clock ul li{
     height: 80px;
     width: 95px;
     display: inline;
@@ -123,10 +123,19 @@ body{
     text-align: center;
 }
 
-#map{
+.mapContainer{
     width: 340px;
     height: 256px;
-    border: solid 3px white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#map{
+    width: 320px;
+    height: 236px;
+    border-radius: 15px;
+    border: 1px solid white;
 }
 
 
@@ -156,7 +165,41 @@ body{
 
 .mic.isRecording{
     background-image: url('img/mic_isRec.svg');
+    position: relative;
 }
+
+.mic.isRecording::before, .mic.isRecording::after{
+    content: '';
+    position: absolute;
+    border: 2px solid red;
+    left: -20px;
+    opacity: 0;
+    right: -20px;
+    top: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+    animation: pulse 2.5s linear infinite;
+}
+
+.mic.isRecording::after{
+    animation-delay: 1.25s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+
 
 .recordPlate{
     margin-top: 16px;

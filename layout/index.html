@@ -7,10 +7,10 @@
 </head>
 <body>
 
-<div class="mainSpace">
-    <p class="naming">WebMultiTool</p>
+<main>
+    <header>WebMultiTool</header>
     <div class="innerSpace">
-        <div class="workspace" id="workspace">
+        <section class="workspace" id="workspace">
             <div class="widget" id="timeWidget" draggable="true" hidden>
                 <div class="clock" id="clock">
                     <div id="date">18 March 2003</div>
@@ -22,16 +22,28 @@
                 </div>
             </div>
 
-            <div class="widget" id="map" draggable="true" hidden></div>
+            <div class="widget" id="mapWidget" draggable="true" hidden>
+                <div class="mapContainer">
+                    <div id="map"></div>
+                </div>
+            </div>
 
             <div class="widget" id="weatherWidget" draggable="true" hidden>
                 <div class="weatherContainer">
                     <div class="search">
                         <img src="img/location.svg" alt="location">
-                        <label><input type="text" class="weather_inp" placeholder="Enter your location" value="Prague"></label>
+                        <label>
+                            <input type="text"
+                                   class="weather_inp"
+                                   placeholder="Enter your location"
+                                   autofocus
+                                   required
+                                   title="At least 3 symbols"
+                                   pattern="[a-zA-Z]{3,20}">
+                        </label>
                         <button class="search_btn"></button>
                     </div>
-                    <img src="" alt="" class="weather_img">
+                    <img src="img/void.png" alt="" class="weather_img">
                     <p class="temp"></p>
                     <p class="temp_description"></p>
                 </div>
@@ -42,16 +54,16 @@
                     <button class="mic"></button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="sidebar" id="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="widgetIcon" id="geoIcon" draggable="true"><img src="img/geo.png" alt=""></div>
             <div class="widgetIcon" id="weatherIcon" draggable="true"><img src="img/weather.png" alt=""></div>
             <div class="widgetIcon" id="timeIcon" draggable="true"><img src="img/time.png" alt=""></div>
             <div class="widgetIcon" id="dicIcon" draggable="true"><img src="img/dic.png" alt=""></div>
-        </div>
+        </aside>
     </div>
-</div>
+</main>
 
 <script type="module" src="../js/main.js"></script>
 <script>

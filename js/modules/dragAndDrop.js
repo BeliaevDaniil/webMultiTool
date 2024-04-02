@@ -15,7 +15,7 @@ function setUpDragAndDrop(){
             workSpace.addEventListener('drop', ()=>{
                 switch (selected.id) {
                     case 'geoIcon':
-                        const geoWidget = getNodeById(widgets,'map')
+                        const geoWidget = getNodeById(widgets,'mapWidget')
                         geoWidget.hidden=false
                         workSpace.appendChild(geoWidget)
                         break
@@ -49,7 +49,7 @@ function setUpDragAndDrop(){
             })
             sidebar.addEventListener('drop', ()=>{
                 switch (selected.id) {
-                    case 'map':
+                    case 'mapWidget':
                         const geoIcon = getNodeById(widgetIcons,'geoIcon')
                         geoIcon.hidden=false
                         sidebar.appendChild(geoIcon)
