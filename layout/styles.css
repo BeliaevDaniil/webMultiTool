@@ -14,12 +14,35 @@ main{
 }
 
 header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header h1{
     color: white;
     font-family: "Poiret One", sans-serif;
     letter-spacing: 1px;
     font-size: 50px;
+    font-weight: lighter;
     padding: 0;
     margin: 0 0 0 180px;
+}
+
+header img {
+    height: 30px;
+    width: 30px;
+    margin-left: 15px;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
 }
 
 .innerSpace{
@@ -34,6 +57,7 @@ header{
     border-radius: 60px;
     margin-right: 40px;
     background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    -webkit-backdrop-filter: blur(20px); /* VENDOR PREFIXES */
     backdrop-filter: blur(20px);
     border: 3px solid white;
     display: grid;
@@ -48,6 +72,7 @@ header{
     width: 240px;
     border-radius: 60px;
     background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    -webkit-backdrop-filter: blur(20px); /* VENDOR PREFIXES */
     backdrop-filter: blur(20px);
     border: 3px solid white;
     display: flex;
@@ -108,7 +133,7 @@ header{
     list-style-type: none;
     display: flex;
     gap: 10px;
-    padding: 0 0 0 0;
+    padding: 0;
 }
 
 .clock ul li{
@@ -179,10 +204,16 @@ header{
     bottom: -20px;
     border-radius: 50%;
     animation: pulse 2.5s linear infinite;
+    -webkit-animation: pulse 2.5s linear infinite;/* VENDOR PREFIXES */
+    -o-animation: pulse 2.5s linear infinite;/* VENDOR PREFIXES */
+    -moz-animation: pulse 2.5s linear infinite;/* VENDOR PREFIXES */
 }
 
 .mic.isRecording::after{
     animation-delay: 1.25s;
+    -webkit-animation-delay: 1.25s; /* VENDOR PREFIXES */
+    -o-animation-delay: 1.25s; /* VENDOR PREFIXES */
+    -moz-animation-delay: 1.25s; /* VENDOR PREFIXES */
 }
 
 @keyframes pulse {
