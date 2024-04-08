@@ -20,6 +20,7 @@ header{
 }
 
 header h1{
+    position: sticky;
     color: white;
     font-family: "Poiret One", sans-serif;
     letter-spacing: 1px;
@@ -48,7 +49,7 @@ header img {
 .innerSpace{
     display: flex;
     justify-content: center;
-    align-items: end;
+    width: 100%;
 }
 
 .workspace{
@@ -89,6 +90,11 @@ header img {
     margin-top: 12px;
     margin-bottom: 12px;
     cursor: grab;
+    transition: transform 0.3s ease;
+}
+
+.widgetIcon:hover{
+    transform: scale(1.1);
 }
 
 .widgetIcon > img {
@@ -105,7 +111,70 @@ header img {
     margin-top: 45px;
     background-image: url('img/bigWidget.png');
     background-size: 340px 256px;
+    transition: transform 0.3s ease;
 }
+
+.widget:hover{
+    transform: scale(1.07);
+}
+
+.shake {
+    animation: shake .8s ease forwards;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg)
+    }
+    10% {
+        transform: rotate(-8deg)
+    }
+    30% {
+        transform: rotate(6deg)
+    }
+    55% {
+        transform: rotate(-3deg)
+    }
+    80% {
+        transform: rotate(1deg)
+    }
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
+@keyframes drop {
+    0% {
+        transform: scale(1.07);
+    }
+    10% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.07);
+    }
+    55% {
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(1.07);
+    }
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
+/*.widgetIcon, .widget {*/
+/*    transition: transform 0.3s ease; !* Добавляем анимацию для свойства transform *!*/
+/*}*/
+/*.dragging {*/
+/*    transform: scale(1.1); !* Применяем масштабирование для анимации *!*/
+/*}*/
+/*.dragover {*/
+/*    transform: scale(1.1); !* Применяем масштабирование для анимации при перетаскивании *!*/
+/*}*/
+
+
 
 .clock{
     width: 300px;
@@ -319,6 +388,22 @@ header img {
     margin: 10px 0 0 0;
 }
 
+
+/*@media screen and (max-width: 650px) {*/
+/*    .innerSpace{*/
+/*        background-color: red;*/
+/*    }*/
+
+
+/*}*/
+
+
+/*@media screen and (max-width: 400px) {*/
+/*    .innerSpace{*/
+/*        flex-direction: column;*/
+/*    }*/
+
+/*}*/
 
 
 

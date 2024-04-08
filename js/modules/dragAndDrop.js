@@ -18,21 +18,25 @@ function setUpDragAndDrop(){
                         const geoWidget = getNodeById(widgets,'mapWidget')
                         geoWidget.hidden=false
                         workSpace.appendChild(geoWidget)
+                        shakeAnimation(geoWidget)
                         break
                     case 'weatherIcon':
                         const weatherWidget = getNodeById(widgets,'weatherWidget')
                         weatherWidget.hidden=false
                         workSpace.appendChild(weatherWidget)
+                        shakeAnimation(weatherWidget)
                         break
                     case 'timeIcon':
                         const timeWidget = getNodeById(widgets,'timeWidget')
                         timeWidget.hidden=false
                         workSpace.appendChild(timeWidget)
+                        shakeAnimation(timeWidget)
                         break
                     case 'dicIcon':
                         const dicWidget = getNodeById(widgets,'dicWidget')
                         dicWidget.hidden=false
                         workSpace.appendChild(dicWidget)
+                        shakeAnimation(dicWidget)
                         break
                 }
                 selected.hidden=true
@@ -53,21 +57,25 @@ function setUpDragAndDrop(){
                         const geoIcon = getNodeById(widgetIcons,'geoIcon')
                         geoIcon.hidden=false
                         sidebar.appendChild(geoIcon)
+                        shakeAnimation(geoIcon)
                         break
                     case 'weatherWidget':
                         const weatherIcon = getNodeById(widgetIcons,'weatherIcon')
                         weatherIcon.hidden=false
                         sidebar.appendChild(weatherIcon)
+                        shakeAnimation(weatherIcon)
                         break
                     case 'timeWidget':
                         const timeIcon = getNodeById(widgetIcons,'timeIcon')
                         timeIcon.hidden=false
                         sidebar.appendChild(timeIcon)
+                        shakeAnimation(timeIcon)
                         break
                     case 'dicWidget':
                         const dicIcon = getNodeById(widgetIcons,'dicIcon')
                         dicIcon.hidden=false
                         sidebar.appendChild(dicIcon)
+                        shakeAnimation(dicIcon)
                         break
                 }
                 selected.hidden=true
@@ -76,6 +84,14 @@ function setUpDragAndDrop(){
         })
     })
 }
+
+function shakeAnimation(object){
+    object.classList.add('shake')
+    setTimeout(() => {
+        object.classList.remove('shake');
+    }, 1000);
+}
+
 
 export default setUpDragAndDrop
 
