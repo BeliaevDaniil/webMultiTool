@@ -14,6 +14,12 @@ export class WeatherWidget extends Widget{
     }
 
     activate(){
+        const savedCity = localStorage.getItem('savedCity');
+        if (savedCity) {
+            this.#inputField.value = savedCity;
+            this.#setUp();
+        }
+
         this.#search_btn.addEventListener('click', this.#setUp.bind(this))
         this.#inputField.addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
@@ -31,10 +37,11 @@ export class WeatherWidget extends Widget{
             .then(response => response.json())
             .then(json => {
                 if (json.cod === '404') alert("ERROR 404: Location not found")
+                localStorage.setItem('savedCity', city);
 
                 const currWeather = json.weather[0]
                 const currHours = new Date().getHours();
-                const isDay = (currHours < 17)
+                const isDay = (currHours < 19)
 
                 switch (currWeather.main) {
                     case 'Clear':
@@ -72,7 +79,6 @@ export class WeatherWidget extends Widget{
                 this.#temp.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
                 let lowerCaseDescription= `${currWeather.description}`;
                 this.#description.innerHTML = lowerCaseDescription.charAt(0).toUpperCase() + lowerCaseDescription.slice(1)
-
             })
     }
 }

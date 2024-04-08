@@ -2,7 +2,6 @@ import Widget from "./Widget.js";
 
 
 export class MapWidget extends Widget{
-
     async activate() {
         const geo = { lat: 50.076705, lng: 14.417842 };
         const { Map } = await google.maps.importLibrary("maps");

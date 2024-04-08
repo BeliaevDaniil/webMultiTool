@@ -34,7 +34,7 @@ export class DictaphoneWidget extends Widget{
             const blop = new Blob(chunks, {type: "audio/ogg; codecs=opus"})
             chunks=[]
             if (document.querySelector('.dictaphone').childElementCount<4){
-                this.#createRecordElement(blop)
+                this.createRecordElement(blop)
             } else alert("Too much records. Please delete some of them to add a new one")
 
         }
@@ -58,7 +58,7 @@ export class DictaphoneWidget extends Widget{
         document.getElementById('recordPlate').remove()
     }
 
-    #createRecordElement(blop){
+    createRecordElement(blop){
         const newRecord = document.createElement('audio')
         newRecord.controls=true
         newRecord.classList.add('record')
