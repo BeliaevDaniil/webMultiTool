@@ -8,9 +8,19 @@ function getNodeById(nodes, id) {
 }
 
 function validateInput(text){
-    if (text.length < 3) alert("Input is too short")
-    if (text.length > 20) alert("Input is too long")
-    if (hasSpecialChars(text)) alert("Input can contain only letters")
+    if (text.length < 3){
+        alert("Input is too short")
+        return false
+    }
+    if (text.length > 20) {
+        alert("Input is too long")
+        return false
+    }
+    if (hasSpecialChars(text)){
+        alert("Input can contain only letters")
+        return false
+    }
+    return true
 }
 
 

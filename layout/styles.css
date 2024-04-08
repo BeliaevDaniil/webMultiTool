@@ -19,8 +19,8 @@ header{
     align-items: center;
 }
 
-header h1{
-    position: sticky;
+.naming{
+    /*position: sticky;*/
     color: white;
     font-family: "Poiret One", sans-serif;
     letter-spacing: 1px;
@@ -28,6 +28,16 @@ header h1{
     font-weight: lighter;
     padding: 0;
     margin: 0 0 0 180px;
+    display: flex;
+    flex-direction: row;
+}
+
+.naming p {
+    margin: 0;
+}
+
+.naming p:first-letter {
+    font-weight: bold;
 }
 
 header img {
@@ -164,18 +174,6 @@ header img {
     }
 }
 
-/*.widgetIcon, .widget {*/
-/*    transition: transform 0.3s ease; !* Добавляем анимацию для свойства transform *!*/
-/*}*/
-/*.dragging {*/
-/*    transform: scale(1.1); !* Применяем масштабирование для анимации *!*/
-/*}*/
-/*.dragover {*/
-/*    transform: scale(1.1); !* Применяем масштабирование для анимации при перетаскивании *!*/
-/*}*/
-
-
-
 .clock{
     width: 300px;
     height: 140px;
@@ -299,8 +297,6 @@ header img {
     }
 }
 
-
-
 .recordPlate{
     margin-top: 16px;
     display: flex;
@@ -358,6 +354,11 @@ header img {
     background-color: transparent;
     border: none;
     color: white;
+}
+
+.search input:invalid{
+    border: solid 1px red;
+    border-radius: 30px;
 }
 
 .search_btn{
