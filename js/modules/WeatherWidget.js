@@ -1,18 +1,35 @@
 import Widget from "./Widget.js";
 import {validateInput} from "./utils.js";
 
+
+/**
+ * Represents a weather widget.
+ * @extends Widget
+ */
 export class WeatherWidget extends Widget{
+    /** @private */
     #apiKey = 'f251d856c58e6672d9a1f2502f32c0a3'
+    /** @private */
     #search_btn = document.querySelector('.search_btn')
+    /** @private */
     #inputField = document.querySelector('.weather_inp');
+    /** @private */
     #image = document.querySelector('.weather_img');
+    /** @private */
     #temp = document.querySelector('.temp');
+    /** @private */
     #description = document.querySelector('.temp_description');
 
+    /**
+     * Constructs a new WeatherWidget instance.
+     */
     constructor() {
         super();
     }
 
+    /**
+     * Activates the weather widget.
+     */
     activate(){
         const savedCity = localStorage.getItem('savedCity');
         if (savedCity) {
@@ -28,6 +45,10 @@ export class WeatherWidget extends Widget{
         })
     }
 
+    /**
+     * Sets up the weather widget.
+     * @private
+     */
     #setUp(){
         const city = document.querySelector('.weather_inp').value
         if (city === '') return
@@ -82,4 +103,6 @@ export class WeatherWidget extends Widget{
         }
     }
 }
+
+
 

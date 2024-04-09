@@ -1,17 +1,42 @@
 import Widget from "./Widget.js";
 
+/**
+ * Represents a clock widget.
+ * @extends Widget
+ */
 export class ClockWidget extends Widget {
+    /**
+     * Array containing names of months.
+     * @type {string[]}
+     * @private
+     */
     #months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    /**
+     * Array containing names of days.
+     * @type {string[]}
+     * @private
+     */
     #days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+    /**
+     * Creates an instance of ClockWidget.
+     */
     constructor() {
         super();
     }
 
+    /**
+     * Activates the clock widget by setting up interval for time update.
+     */
     activate() {
         setInterval(this.#processTime.bind(this), 500);
     }
 
+    /**
+     * Updates the time and date displayed on the widget.
+     * @private
+     */
     #processTime() {
         const today = new Date();
         document.getElementById('date').innerHTML = (this.#days[today.getDay()] + " " +

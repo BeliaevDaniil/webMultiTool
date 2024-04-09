@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta information -->
     <meta charset="UTF-8">
     <title>WebMultiTool</title>
+    <!-- Linking external stylesheet -->
     <link rel="stylesheet" media="screen" href="styles.css">
 </head>
 <body>
 <main>
     <header>
-<!--        <h1>WebMultiTool</h1>-->
+        <!-- Logo and naming section -->
         <div class="naming">
             <p>Web</p>
             <p>Multi</p>
             <p>Tool</p>
         </div>
+        <!-- Logo image -->
         <img src="img/logo.svg" alt="logo">
     </header>
     <div class="innerSpace">
+        <!-- Workspace section -->
         <section class="workspace" id="workspace">
+            <!-- Time widget -->
             <div class="widget" id="timeWidget" draggable="true" hidden>
                 <div class="clock" id="clock">
+                    <!-- Displaying date -->
                     <div id="date">18 March 2003</div>
+                    <!-- Displaying time -->
                     <ul>
                         <li id="hours">04</li>
                         <li id="min">20</li>
@@ -28,18 +35,20 @@
                     </ul>
                 </div>
             </div>
-
+            <!-- Map widget -->
             <div class="widget" id="mapWidget" draggable="true" hidden>
                 <div class="mapContainer">
                     <div id="map"></div>
                 </div>
             </div>
-
+            <!-- Weather widget -->
             <div class="widget" id="weatherWidget" draggable="true" hidden>
                 <div class="weatherContainer">
+                    <!-- Weather search -->
                     <div class="search">
                         <img src="img/location.svg" alt="location">
                         <label>
+                            <!-- Input field for location -->
                             <input type="text"
                                    class="weather_inp"
                                    placeholder="Enter your location"
@@ -48,22 +57,26 @@
                                    title="At least 3 symbols"
                                    pattern="[a-zA-Z]{3,20}">
                         </label>
+                        <!-- Search button -->
                         <button class="search_btn"></button>
                     </div>
+                    <!-- Weather information display -->
                     <img src="img/void.png" alt="" class="weather_img">
                     <p class="temp"></p>
                     <p class="temp_description"></p>
                 </div>
             </div>
-
+            <!-- Dictaphone widget -->
             <div class="widget" id="dicWidget" draggable="true" hidden>
                 <div class="dictaphone">
+                    <!-- Microphone button for dictation -->
                     <button class="mic"></button>
                 </div>
             </div>
         </section>
-
+        <!-- Sidebar section -->
         <aside class="sidebar" id="sidebar">
+            <!-- Widget icons for sidebar -->
             <div class="widgetIcon" id="geoIcon" draggable="true"><img src="img/geo.png" alt=""></div>
             <div class="widgetIcon" id="weatherIcon" draggable="true"><img src="img/weather.png" alt=""></div>
             <div class="widgetIcon" id="timeIcon" draggable="true"><img src="img/time.png" alt=""></div>
@@ -71,29 +84,7 @@
         </aside>
     </div>
 </main>
-
+<!-- Linking JavaScript file -->
 <script type="module" src="../js/main.js"></script>
-<script>
-    (g=>{
-        let h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__",
-            m = document, b = window;b=b[c]||(b[c]={});
-        const d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams,
-            u = () => h || (h = new Promise(async (f, n) => {
-                await (a = m.createElement("script"));
-                e.set("libraries", [...r] + "");
-                for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
-                e.set("callback", c + ".maps." + q);
-                a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
-                d[q] = f;
-                a.onerror = () => h = n(Error(p + " could not load."));
-                a.nonce = m.querySelector("script[nonce]")?.nonce || "";
-                m.head.append(a)
-            }));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f, ...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-        key: "AIzaSyBorNXSocyjJbnCdEDwoSJQsADYXx6dGfU",
-        v: "weekly",
-    });
-</script>
-
-
 </body>
 </html>

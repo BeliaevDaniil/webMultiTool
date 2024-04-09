@@ -1,3 +1,9 @@
+/**
+ * Returns a node from an array of nodes by its identifier.
+ * @param {Array<Object>} nodes - Array of node objects.
+ * @param {string} id - Identifier of the node to be found.
+ * @returns {Object|null} - The found node or null if the node is not found.
+ */
 function getNodeById(nodes, id) {
     for (let i = 0; i < nodes.length; i++) {
         if (nodes[i].id === id) {
@@ -7,6 +13,11 @@ function getNodeById(nodes, id) {
     return null;
 }
 
+/**
+ * Validates the input text according to specified criteria.
+ * @param {string} text - Input text to be validated.
+ * @returns {boolean} - Returns true if the input text passes validation, otherwise false.
+ */
 function validateInput(text){
     if (text.length < 3){
         alert("Input is too short")
@@ -23,7 +34,11 @@ function validateInput(text){
     return true
 }
 
-
+/**
+ * Checks for the presence of special characters in the text.
+ * @param {string} text - Text to be checked.
+ * @returns {boolean} - Returns true if the text contains special characters, otherwise false.
+ */
 function hasSpecialChars(text) {
     const specialChars = ['&', '<', '>', '"', '\''];
 
@@ -34,4 +49,14 @@ function hasSpecialChars(text) {
     return false
 }
 
-export {getNodeById, validateInput}
+/**
+ * Checks if the browser is in offline mode and displays a corresponding message.
+ */
+function checkIfOffline(){
+    window.addEventListener('offline', function(event) {
+        alert('Web paged was switched to offline mode. "Map" and "Weather" widgets will not be available or their functionality will be limited');
+    })
+}
+
+
+export {getNodeById, validateInput, checkIfOffline}

@@ -1,30 +1,47 @@
 import {widgets} from "../main.js";
 
+/**
+ * Object to hold the visibility state of widgets.
+ * @type {Object}
+ */
 const widgetsVisibilityState = {}
+
+/**
+ * Object to hold the visibility state of icons.
+ * @type {Object}
+ */
 const iconsVisibilityState = {}
 
+/**
+ * Activates the state holding mechanism.
+ */
 function activateStateHolding(){
     console.log("state holder was activated")
     window.addEventListener('beforeunload', saveAppState);
     window.addEventListener('load', loadAppState);
 }
 
+/**
+ * Saves the application state.
+ */
 function saveAppState(){
     console.log("state was saved")
     saveWidgetsVisibility()
     saveDictaphoneState()
-    saveMapState()
-    saveWeatherState()
 }
 
+/**
+ * Loads the application state.
+ */
 function loadAppState(){
     console.log("state was loaded")
     loadWidgetsVisibility()
     loadDictaphoneState()
-    loadMapState()
-    loadWeatherState()
 }
 
+/**
+ * Saves the visibility state of widgets.
+ */
 function saveWidgetsVisibility(){
     document.querySelectorAll('.widget').forEach(widget => {
         widgetsVisibilityState[widget.id] = widget.hidden
@@ -36,11 +53,12 @@ function saveWidgetsVisibility(){
     localStorage.setItem('iconsVisibilityState', JSON.stringify(iconsVisibilityState))
 }
 
+/**
+ * Loads the visibility state of widgets.
+ */
 function loadWidgetsVisibility(){
     const savedWidgetsVisibilityState = JSON.parse(localStorage.getItem('widgetsVisibilityState'))
     const savedIconsVisibilityState = JSON.parse(localStorage.getItem('iconsVisibilityState'))
-    console.log(savedWidgetsVisibilityState)
-    console.log(savedIconsVisibilityState)
 
     if (savedWidgetsVisibilityState && savedIconsVisibilityState) {
         Object.keys(savedWidgetsVisibilityState).forEach(widgetId => {
@@ -56,9 +74,11 @@ function loadWidgetsVisibility(){
             }
         })
     }
-
 }
 
+/**
+ * Saves the state of the dictaphone.
+ */
 function saveDictaphoneState(){
     const records = document.querySelectorAll('.record');
     if (records.length > 0) {
@@ -70,6 +90,9 @@ function saveDictaphoneState(){
     }
 }
 
+/**
+ * Loads the state of the dictaphone.
+ */
 function loadDictaphoneState(){
     const savedData = JSON.parse(localStorage.getItem('dictaphoneData'))
     if (savedData) {

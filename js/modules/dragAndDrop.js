@@ -1,11 +1,19 @@
 import {getNodeById} from "./utils.js";
 
+
+/**
+ * Sets up drag and drop functionality for widgets and icons.
+ */
 function setUpDragAndDrop(){
     const widgetIcons = document.querySelectorAll('.widgetIcon')
     const widgets = document.querySelectorAll('.widget')
     const workSpace = document.getElementById('workspace')
     const sidebar = document.getElementById('sidebar')
 
+
+    /**
+     * Sets up drag and drop for widget icons.
+     */
     widgetIcons.forEach(icon => {
         icon.addEventListener('dragstart', ()=>{
             let selected = icon
@@ -45,8 +53,12 @@ function setUpDragAndDrop(){
                 }
             })
         })
-    });
+    })
 
+
+    /**
+     * Sets up drag and drop for widgets.
+     */
     widgets.forEach(widget => {
         widget.addEventListener('dragstart', ()=>{
             let selected = widget
@@ -89,6 +101,11 @@ function setUpDragAndDrop(){
     })
 }
 
+
+/**
+ * Represents a shake animation for an object.
+ * @param {HTMLElement} object - The object to apply the shake animation to.
+ */
 function shakeAnimation(object){
     object.classList.add('shake')
     setTimeout(() => {

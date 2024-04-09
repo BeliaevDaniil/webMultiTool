@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+/* General */
 body{
     background-image: url('img/bg.png');
     height: 100vh;
@@ -12,15 +13,30 @@ main{
     display: flex;
     flex-direction: column;
 }
-
+/* Header */
 header{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
+header img {
+    height: 30px;
+    width: 30px;
+    margin-left: 15px;
+    animation: rotate 10s linear infinite;
+}
+/*Logo animation*/
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+/* Naming */
 .naming{
-    /*position: sticky;*/
     color: white;
     font-family: "Poiret One", sans-serif;
     letter-spacing: 1px;
@@ -35,26 +51,11 @@ header{
 .naming p {
     margin: 0;
 }
-
+/* Usage of advanced pseudo classes */
 .naming p:first-letter {
     font-weight: bold;
 }
 
-header img {
-    height: 30px;
-    width: 30px;
-    margin-left: 15px;
-    animation: rotate 10s linear infinite;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(360deg);
-    }
-    to {
-        transform: rotate(0deg);
-    }
-}
 
 .innerSpace{
     display: flex;
@@ -62,6 +63,7 @@ header img {
     width: 100%;
 }
 
+/* Workspace */
 .workspace{
     height: 632px;
     width: 800px;
@@ -78,9 +80,10 @@ header img {
     justify-content: center;
 }
 
+/* Sidebar */
 .sidebar{
     height: 632px;
-    width: 240px;
+    min-width: 240px;
     border-radius: 60px;
     background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
     -webkit-backdrop-filter: blur(20px); /* VENDOR PREFIXES */
@@ -92,6 +95,7 @@ header img {
     flex-direction: column;
 }
 
+/* Icons */
 .widgetIcon{
     height: 120px;
     width: 120px;
@@ -103,6 +107,7 @@ header img {
     transition: transform 0.3s ease;
 }
 
+/* Usage of advanced pseudo classes */
 .widgetIcon:hover{
     transform: scale(1.1);
 }
@@ -112,6 +117,7 @@ header img {
     width: 120px;
 }
 
+/* Widgets*/
 .widget{
     width: 340px;
     height: 256px;
@@ -124,10 +130,12 @@ header img {
     transition: transform 0.3s ease;
 }
 
+/* Usage of advanced pseudo classes */
 .widget:hover{
     transform: scale(1.07);
 }
 
+/* Widgets and icons animations*/
 .shake {
     animation: shake .8s ease forwards;
 }
@@ -174,6 +182,7 @@ header img {
     }
 }
 
+/* CLock widget*/
 .clock{
     width: 300px;
     height: 140px;
@@ -215,6 +224,7 @@ header img {
     text-align: center;
 }
 
+/* Map widget*/
 .mapContainer{
     width: 340px;
     height: 256px;
@@ -230,7 +240,7 @@ header img {
     border: 1px solid white;
 }
 
-
+/* Dictaphone widget*/
 .dictaphone{
     width: 340px;
     height: 256px;
@@ -251,6 +261,7 @@ header img {
     box-shadow: 0 9px 0 rgba(0,0,0,0.25);
 }
 
+/* Usage of advanced pseudo classes */
 .mic:hover{
     background-image: url('img/mic_hover.svg');
 }
@@ -260,6 +271,7 @@ header img {
     position: relative;
 }
 
+/* Usage of advanced pseudo classes */
 .mic.isRecording::before, .mic.isRecording::after{
     content: '';
     position: absolute;
@@ -276,6 +288,7 @@ header img {
     -moz-animation: pulse 2.5s linear infinite;/* VENDOR PREFIXES */
 }
 
+/* Usage of advanced pseudo classes */
 .mic.isRecording::after{
     animation-delay: 1.25s;
     -webkit-animation-delay: 1.25s; /* VENDOR PREFIXES */
@@ -283,6 +296,7 @@ header img {
     -moz-animation-delay: 1.25s; /* VENDOR PREFIXES */
 }
 
+/* Mic is recording animation*/
 @keyframes pulse {
     0% {
         transform: scale(0.5);
@@ -323,10 +337,12 @@ header img {
     box-shadow: 0 9px 0 rgba(0,0,0,0.25);
 }
 
+/* Usage of advanced pseudo classes */
 .deleteRecord:hover{
     background-image: url("img/delete_hover.svg");
 }
 
+/* Weather widget*/
 .weatherContainer{
     width: 340px;
     height: 256px;
@@ -356,6 +372,7 @@ header img {
     color: white;
 }
 
+/* Usage of advanced pseudo classes */
 .search input:invalid{
     border: solid 1px red;
     border-radius: 30px;
@@ -370,6 +387,7 @@ header img {
     cursor: pointer;
 }
 
+/* Usage of advanced pseudo classes */
 .search_btn:hover{
     background-image: url("img/search_hover.svg");
 }
@@ -390,21 +408,39 @@ header img {
 }
 
 
-/*@media screen and (max-width: 650px) {*/
+/*@media screen and (max-width: 1024px) {*/
+/*    .workspace {*/
+/*        width: 80%;*/
+/*        grid-template-columns: 1fr;*/
+/*        grid-template-rows: 4fr;*/
+/*        justify-content: center;*/
+/*    }*/
+
+/*    .workspace .widget {*/
+/*        width: 100%;*/
+/*        margin-top: 30px;*/
+/*    }*/
+
+/*    .sidebar {*/
+/*        margin-top: 30px;*/
+/*    }*/
+/*}*/
+
+
+/*@media all and (max-width: 650px) {*/
 /*    .innerSpace{*/
+/*        flex-direction: column;*/
 /*        background-color: red;*/
 /*    }*/
 
-
-/*}*/
-
-
-/*@media screen and (max-width: 400px) {*/
-/*    .innerSpace{*/
-/*        flex-direction: column;*/
+/*    .workspace{*/
+/*        grid-template-columns: repeat(1, 340px);*/
+/*        grid-template-rows: repeat(1, 256px);*/
 /*    }*/
 
+
 /*}*/
+
 
 
 
