@@ -17,11 +17,13 @@ function setUpDragAndDrop(){
     widgetIcons.forEach(icon => {
         icon.addEventListener('dragstart', ()=>{
             let selected = icon
+            selected.classList.add('blur')
             workSpace.addEventListener('dragover', (event)=>{
                 event.preventDefault()
             })
             workSpace.addEventListener('drop', ()=>{
                 if (selected!==null) {
+                    selected.classList.remove('blur')
                     switch (selected.id) {
                         case 'geoIcon':
                             const geoWidget = getNodeById(widgets,'mapWidget')
@@ -62,11 +64,13 @@ function setUpDragAndDrop(){
     widgets.forEach(widget => {
         widget.addEventListener('dragstart', ()=>{
             let selected = widget
+            selected.classList.add('blur')
             sidebar.addEventListener('dragover', (event)=>{
                 event.preventDefault()
             })
             sidebar.addEventListener('drop', ()=>{
                 if (selected!==null){
+                    selected.classList.remove('blur')
                     switch (selected.id) {
                         case 'mapWidget':
                             const geoIcon = getNodeById(widgetIcons,'geoIcon')

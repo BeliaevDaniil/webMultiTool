@@ -41,7 +41,7 @@ export const widgets = [
 /**
  * Activate each widget in the widgets array.
  */
-widgets.forEach(widget => widget.activate());
+widgets.forEach(widget => widget.activate())
 
 /**
  * Activate state holding functionality.

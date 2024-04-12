@@ -40,20 +40,19 @@ export class DictaphoneWidget extends Widget {
      * @private
      */
     #setUpStream(stream) {
-        let chunks = [];
-        this.#recorder = new MediaRecorder(stream);
+        let chunks = []
+        this.#recorder = new MediaRecorder(stream)
         this.#recorder.ondataavailable = ev => {
-            chunks.push(ev.data);
-        };
-
+            chunks.push(ev.data)
+        }
         this.#recorder.onstop = () => {
-            const blop = new Blob(chunks, {type: "audio/ogg; codecs=opus"});
-            chunks=[];
+            const blop = new Blob(chunks, {type: "audio/ogg; codecs=opus"})
+            chunks=[]
             if (document.querySelector('.dictaphone').childElementCount<4){
                 this.createRecordElement(blop);
-            } else alert("Too much records. Please delete some of them to add a new one");
+            } else alert("Too much records. Please delete some of them to add a new one")
 
-        };
+        }
         this.#isAbleToRecord = true;
     }
 

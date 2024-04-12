@@ -58,5 +58,53 @@ function checkIfOffline(){
     })
 }
 
+/**
+ * Converts a Blob to an ArrayBuffer asynchronously.
+ * @param {Blob} blob - The Blob object to convert.
+ * @returns {Promise<ArrayBuffer>} A Promise that resolves with the ArrayBuffer.
+ */
+function blobToArrayBuffer(blob) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.addEventListener('loadend', (e) => {
+            resolve(reader.result);
+        });
+        reader.addEventListener('error', reject);
+        reader.readAsArrayBuffer(blob);
+    });
+}
 
-export {getNodeById, validateInput, checkIfOffline}
+/**
+ * Converts an ArrayBuffer to a Blob.
+ * @param {ArrayBuffer} buffer - The ArrayBuffer to convert.
+ * @param {string} type - The MIME type of the Blob to create.
+ * @returns {Blob} The converted Blob object.
+ */
+function arrayBufferToBlob(buffer, type) {
+    return new Blob([buffer], {type: type});
+}
+
+/**
+ * Deletes all elements in DB
+ * @param dbName
+ */
+function cleanDB(dbName){
+    const request = indexedDB.open(dbName);
+
+    request.onsuccess = function(event) {
+        const db = event.target.result;
+
+        const transaction = db.transaction(['recordStore'], 'readwrite');
+        const objectStore = transaction.objectStore('recordStore');
+        objectStore.openCursor().onsuccess = function(event) {
+            const cursor = event.target.result;
+            if (cursor) {
+                cursor.delete();
+                cursor.continue();
+            }
+        }
+    }
+}
+
+
+export {getNodeById, validateInput, checkIfOffline, blobToArrayBuffer, arrayBufferToBlob, cleanDB}

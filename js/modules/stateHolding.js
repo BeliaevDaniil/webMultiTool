@@ -1,4 +1,5 @@
 import {widgets} from "../main.js";
+import {blobToArrayBuffer, arrayBufferToBlob, cleanDB} from "./utils.js";
 
 /**
  * Object to hold the visibility state of widgets.
@@ -37,6 +38,7 @@ function loadAppState(){
     console.log("state was loaded")
     loadWidgetsVisibility()
     loadDictaphoneState()
+    cleanDB("recordsDB")
 }
 
 /**
@@ -79,28 +81,67 @@ function loadWidgetsVisibility(){
 /**
  * Saves the state of the dictaphone.
  */
-function saveDictaphoneState(){
+function saveDictaphoneState() {
     const records = document.querySelectorAll('.record');
-    if (records.length > 0) {
-        const dictaphoneData = []
-        records.forEach(record => {
-            dictaphoneData.push(record.src);
-        })
-        localStorage.setItem('dictaphoneData', JSON.stringify(dictaphoneData))
+    const open = indexedDB.open("recordsDB");
+    let db;
+
+    if (records.length!==0) {
+        open.onsuccess = async function(event) {
+            db = event.target.result
+            for (const record of records) {
+                const audioBlob = await fetch(record.src).then(response => response.blob())
+                const audioBuffer = await blobToArrayBuffer(audioBlob)
+                const timestamp = new Date().getTime()
+
+                const transaction = db.transaction(["recordStore"], "readwrite")
+                const recordStore = transaction.objectStore("recordStore")
+                const recordObj = {
+                    audioBuffer: audioBuffer,
+                    timestamp: timestamp
+                }
+                const addRequest = recordStore.add(recordObj)
+                addRequest.onsuccess = ev => {
+                    console.log("audio was saved")
+                }
+                addRequest.onerror = ev => {
+                    console.error(`Audio was not saved: ${event.target.errorCode}`)
+                }
+            }
+        }
+        open.onerror = function(event) {
+            console.error(`Database error: ${event.target.errorCode}`)
+        }
     }
 }
 
 /**
  * Loads the state of the dictaphone.
  */
-function loadDictaphoneState(){
-    const savedData = JSON.parse(localStorage.getItem('dictaphoneData'))
-    if (savedData) {
-        savedData.map(recordSrc => {
-            const blob = new Blob([recordSrc], { type: 'audio/ogg; codecs=opus' })
-            widgets[2].createRecordElement(blob)
-        })
+function loadDictaphoneState() {
+    const openRequest = indexedDB.open("recordsDB")
+    let db
+
+    openRequest.onsuccess = function(event) {
+        db = event.target.result
+        const transaction = db.transaction(["recordStore"], "readonly")
+        const objectStore = transaction.objectStore("recordStore")
+
+        objectStore.openCursor().onsuccess = function(event) {
+            const cursor = event.target.result
+            if (cursor) {
+                const blob = arrayBufferToBlob(cursor.value.audioBuffer)
+                widgets[2].createRecordElement(blob)
+                cursor.continue()
+            } else {
+                console.log("All blob objects retrieved")
+            }
+        }
     }
+
+    openRequest.onerror = function(event) {
+        console.error(`Database error: ${event.target.errorCode}`);
+    };
 }
 
 export {activateStateHolding}
